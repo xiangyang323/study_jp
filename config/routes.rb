@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :users
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   # The priority is based upon order of creation: first created -> highest priority.
@@ -7,6 +6,16 @@ Rails.application.routes.draw do
 
   #You can have the root of your site routed with "root"
   root 'top#index'
+
+  devise_for :users, controllers: { sessions: 'users/sessions' ,  registrations: "users/registrations"}
+
+  devise_scope :user do
+    get 'login', to: 'users/sessions#new'
+    get 'logout', to: 'users/sessions#destroy'
+    get 'sign_up', to: 'users/registrations#new'
+    get "profile", :to => "users/registrations#edit"
+  end
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
