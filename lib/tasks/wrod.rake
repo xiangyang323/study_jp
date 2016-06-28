@@ -2,9 +2,11 @@ namespace :init do
 
   desc "读word文件到word表中"
   task :word => :environment do |task|
+    local = "1_6"
+
     p "word start->#{Time.now.to_s(:db)}"
-    if File.exist?("/Users/xiangyang/Desktop/word.txt")
-      lines = IO.readlines("/Users/xiangyang/Desktop/word.txt")
+    if File.exist?("doc/words/#{local}.txt")
+      lines = IO.readlines("doc/words/#{local}.txt")
       p lines.size
       lines.each do |line|
         line.gsub!("\n", "")
@@ -21,7 +23,7 @@ namespace :init do
         else
           p line  
         end
-        hash[:location] = "1_2"
+        hash[:location] = local
         Word.create(hash) if !hash[:kana].blank?
       end  
     end
