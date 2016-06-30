@@ -2,7 +2,7 @@ namespace :init do
 
   desc "读word文件到word表中"
   task :word => :environment do |task|
-    local = "1_6"
+    local = "1_7"
 
     p "word start->#{Time.now.to_s(:db)}"
     if File.exist?("doc/words/#{local}.txt")
@@ -28,5 +28,13 @@ namespace :init do
       end  
     end
     p "word end->#{Time.now.to_s(:db)}"
+  end
+
+  desc "读取mp3文件"
+  task :read_mp3 => :environment do |task|
+    p "read_mp3 start->#{Time.now.to_s(:db)}"
+
+
+    p "read_mp3 end->#{Time.now.to_s(:db)}"
   end
 end  

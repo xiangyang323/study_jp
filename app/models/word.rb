@@ -20,5 +20,10 @@ class Word < ActiveRecord::Base
   LOCAL_1_2 = "1_2"
   LOCAL_1_3 = "1_3"
   LOCAL_1_4 = "1_4"
+  LOCAL_1_5 = "1_5"
+  LOCAL_1_6 = "1_6"
+  LOCAL_1_7 = "1_7"
+  LOCAL_1_8 = "1_8"
+  LOCAL_1_9 = "1_9"
   
 end
