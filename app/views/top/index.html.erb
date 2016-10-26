@@ -1,5 +1,3 @@
-
-
-  <audio id="aaa" src="http://d1.g.hjfile.cn/voice/jpsound/J25023.mp3" autoplay controls></audio>
-  <input type=button value=暂停 onclick="aaa.pause();">
-  <input type=button value=播放 onclick="aaa.play();">
+<%Word::LOCAL_1.each_with_index do |value, idx| %>
+    <%=link_to("第#{idx + 1}课", controller: "courses", action: "index", id: value)%><br>
+<%end%>

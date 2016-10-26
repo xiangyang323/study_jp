@@ -1,6 +1,9 @@
 class Word < ActiveRecord::Base
   has_many :word_r_categories
 
+  scope :by_local, -> (local){
+    where(location: local)
+  }
  
   #classify
   CLASSIFY_N = "n"  #none
@@ -15,15 +18,6 @@ class Word < ActiveRecord::Base
   	CLASSIFY_INTERROG, "疑问词", CLASSIFY_CONJ, "连词",
   	CLASSIFY_V1, "动1", CLASSIFY_V2, "动2", CLASSIFY_V3, "动3"]
 
-  #local
-  LOCAL_1_1 = "1_1"
-  LOCAL_1_2 = "1_2"
-  LOCAL_1_3 = "1_3"
-  LOCAL_1_4 = "1_4"
-  LOCAL_1_5 = "1_5"
-  LOCAL_1_6 = "1_6"
-  LOCAL_1_7 = "1_7"
-  LOCAL_1_8 = "1_8"
-  LOCAL_1_9 = "1_9"
+  LOCAL_1 = ["1_1", "1_2", "1_3", "1_4", "1_5", "1_6", "1_7", "1_8", "1_9"]
   
 end

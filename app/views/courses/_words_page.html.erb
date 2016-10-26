@@ -1,0 +1,16 @@
+<table>
+  <tr>
+    <th>读音</th>
+    <th>单词</th>
+    <th>中文</th>
+    <th>词性</th>
+  </tr>
+<%@words.each do |word|%>
+    <tr>
+      <td><%=word.kana%></td>
+      <td><%=word.word_jp%></td>
+      <td><%=word.word_ch%></td>
+      <td><%=Word::CLASSIFY[word.classify]%></td>
+    </tr>
+<%end%>
+</table>
