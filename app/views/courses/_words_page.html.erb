@@ -14,3 +14,10 @@
     </tr>
 <%end%>
 </table>
+
+<%= will_paginate @words, next_label: "下一页 »", previous_label: "« 上一页" , :inner_window => 2, :outer_window => 1 %>
+<script>
+    $(function () {
+        $('.pagination a').attr('data-remote', 'true');
+    })
+</script>

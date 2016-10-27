@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   end
 
   get "courses/:id", to: 'courses#index'
+  get "courses/exam/:id", to: 'courses#exam'
 
   resources :courses, only: [:index, :show] do
 
