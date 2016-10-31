@@ -1,8 +1,9 @@
 <h1><%="第#{@courses}课"%></h1>
+<%=link_to "返回首页", root_path%>
 
 <h2>单词</h2>
-<div id="word_page">
+<div id="words_page">
   <%=render partial: 'courses/words_page'%>
 </div>
 
-<%=link_to "测试单词", controller: "courses", action: "exam", id: params[:id]%>
+<%=link_to "测试读音", controller: "courses", action: "exam", id: params[:id], type: "read"%>

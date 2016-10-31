@@ -1,0 +1,17 @@
+<%word = @words.first%>
+<div class="word">
+  <span id="test_ch" class="<%=params["type"] == "ch"? "none":""%>"><%=word.word_ch%></span><br>
+  <span id="test_read" class="<%=params["type"] == "read"? "none":""%>"><%=word.kana%></span>
+  <span><%=Word::CLASSIFY[word.classify]%></span><br>
+  <input type="text" word_id="<%=word.id%>" id="input_test" test="<%=params['type']%>">
+  <span class="word_error none">error</span>
+  <span class="word_true none">true</span><br>
+  <input type="button" value="测试" onclick="testWord()">
+</div>
+<%= will_paginate @words, next_label: "下一个 »", previous_label: "« 上一个", page_links: false %>
+
+<script type="text/javascript">
+    $(function () {
+        $('.pagination a').attr('data-remote', 'true');
+    })
+</script>

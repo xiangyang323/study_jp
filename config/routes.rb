@@ -18,16 +18,15 @@ Rails.application.routes.draw do
     get "profile", :to => "users/registrations#edit"
   end
 
+  resources :courses, only: [:index, :show] do
+    collection do
+      get 'recode_word'
+    end
+  end
+
   get "courses/:id", to: 'courses#index'
   get "courses/exam/:id", to: 'courses#exam'
-
-  resources :courses, only: [:index, :show] do
-
-  end
-
-  resources :words, only: [:index, :show] do
-
-  end
+  get "courses/exam/:id/:type", to: 'courses#exam'
 
 
   # Example of regular route:
