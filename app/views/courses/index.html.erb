@@ -6,4 +6,10 @@
   <%=render partial: 'courses/words_page'%>
 </div>
 
-<%=link_to "测试读音", controller: "courses", action: "exam", id: params[:id], type: "read"%>
+<%if params[:type] == Record::TYPE_0.to_s%>
+  <%=link_to "返回首页", controller: "courses", action: "index", id: params[:id]%>
+<%else%>
+  <%=link_to "测试读音", controller: "courses", action: "exam", id: params[:id], type: Record::TYPE_3%>
+  <%=link_to "中翻译日", controller: "courses", action: "exam", id: params[:id], type: Record::TYPE_1%>
+  <%=link_to "浏览", controller: "courses", action: "index", id: params[:id], type: Record::TYPE_0, remote: true%>
+<%end%>

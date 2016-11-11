@@ -1,3 +1,25 @@
 <%Word::LOCAL_1.each_with_index do |value, idx| %>
     <%=link_to("第#{idx + 1}课", controller: "courses", action: "index", id: value)%><br>
 <%end%>
+
+
+<table>
+  <tr>
+    <th>课程</th>
+    <th>单词</th>
+    <th>单词学习</th>
+    <th>句子</th>
+    <th>句子学习</th>
+    <th>时间</th>
+  </tr>
+  <%@user.records.each do |recode|%>
+      <tr>
+        <td><%=recode.get_word_course%></td>
+        <td><%=recode.get_word%></td>
+        <td><%=recode.get_word_type%></td>
+        <td><%=recode.get_sentence%></td>
+        <td><%=recode.get_sentence_type%></td>
+        <td><%=recode.date.to_s%></td>
+      </tr>
+  <%end%>
+</table>

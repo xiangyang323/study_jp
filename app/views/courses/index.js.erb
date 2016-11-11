@@ -1,1 +1,5 @@
+<%if action_name == "index"%>
 $('#words_page').html(" <%= escape_javascript(render(partial: 'courses/words_page'))%> ");
+<%elsif action_name == "exam"%>
+$('#word_page').html(" <%= escape_javascript(render(partial: 'courses/word'))%> ");
+<%end%>

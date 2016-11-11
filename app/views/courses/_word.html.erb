@@ -1,13 +1,20 @@
-<%word = @words.first%>
+<%=@words.total_entries%>/<%=@count%>
+<%if !@word.nil?%>
 <div class="word">
-  <span id="test_ch" class="<%=params["type"] == "ch"? "none":""%>"><%=word.word_ch%></span><br>
-  <span id="test_read" class="<%=params["type"] == "read"? "none":""%>"><%=word.kana%></span>
-  <span><%=Word::CLASSIFY[word.classify]%></span><br>
-  <input type="text" word_id="<%=word.id%>" id="input_test" test="<%=params['type']%>">
+  <span id="test_<%=Record::TYPE_2%>" class="<%=params["type"] == "ch"? "none":""%>"><%=@word.word_ch%></span><br>
+  <span id="test_<%=Record::TYPE_1%>" class="<%=[Record::TYPE_1,Record::TYPE_3].include?(params["type"].to_i)? "none":""%>"><%=@word.word_jp%></span><br>
+  <span id="test_<%=Record::TYPE_3%>" class="<%=[Record::TYPE_1,Record::TYPE_3].include?(params["type"].to_i)? "none":""%>"><%=@word.kana%></span>
+  <span><%=Word::CLASSIFY[@word.classify]%></span><br>
+  <input type="text" word_id="<%=@word.id%>" id="input_test" test="<%=params['type']%>">
   <span class="word_error none">error</span>
   <span class="word_true none">true</span><br>
-  <input type="button" value="测试" onclick="testWord()">
+  <input type="button" value="测试" onclick="testWord('<%=params[:id]%>')">
+  <input type="button" value="显示" onclick="showWord('<%=params[:id]%>')">
 </div>
+<%else%>
+  <%=link_to "重新开始", controller: "courses", action: "clear_course", id: params[:id], type: params[:type]%>
+<%end%>
+
 <%= will_paginate @words, next_label: "下一个 »", previous_label: "« 上一个", page_links: false %>
 
 <script type="text/javascript">

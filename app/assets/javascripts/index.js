@@ -1,8 +1,8 @@
-function testWord(){
-    if($(".word_true").css("display").indexOf("inline") != -1){
-        alert("去下一个");
-        return;
-    }
+function testWord(local){
+    //if($(".word_true").css("display").indexOf("inline") != -1){
+    //    alert("去下一个");
+    //    return;
+    //}
     $(".word_error").hide();
     $(".word_true").hide();
 
@@ -22,11 +22,16 @@ function testWord(){
         $(".word_error").show();
     }
     $('#input_test').val("");
-    sendWordExam(word_id, wordFlag, 1);
+    sendWordExam(word_id, wordFlag, 1, type, local);
 }
 
-function sendWordExam(word_id, wordFlag, user_id){
-    $.get("/courses/recode_word", {user_id: user_id, flag: wordFlag, word_id: word_id}, function (data, textStatus){
-        alert(data);
-    })
+function showWord(local){
+    var word_id = $('#input_test').attr("word_id");
+    $(".word span").removeClass("none");
+    var type = $('#input_test').attr("test");
+    sendWordExam(word_id, true, 1, type, local);
+}
+
+function sendWordExam(word_id, wordFlag, user_id, type, local){
+    $.get("/courses/recode_word", {user_id: user_id, flag: wordFlag, word_id: word_id, type: type, local: local})
 }

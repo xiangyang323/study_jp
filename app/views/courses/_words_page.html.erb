@@ -15,7 +15,7 @@
 <%end%>
 </table>
 
-<%= will_paginate @words, next_label: "下一页 »", previous_label: "« 上一页" , :inner_window => 2, :outer_window => 1 %>
+<%= will_paginate @words, next_label: "下一页 »", previous_label: "« 上一页" , :inner_window => 2, :outer_window => 1, page_links: params[:type].blank?? true:false %>
 
 <script type="text/javascript">
     $(function () {

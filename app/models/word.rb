@@ -19,5 +19,13 @@ class Word < ActiveRecord::Base
   	CLASSIFY_V1, "动1", CLASSIFY_V2, "动2", CLASSIFY_V3, "动3"]
 
   LOCAL_1 = ["1_1", "1_2", "1_3", "1_4", "1_5", "1_6", "1_7", "1_8", "1_9"]
+
+  def get_course
+    self.location.split("_")[1]
+  end
+
+  def get_book
+    self.location.split("_")[0]
+  end
   
 end

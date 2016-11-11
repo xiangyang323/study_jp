@@ -1,4 +1,4 @@
-<h1><%="第#{@courses}课"%></h1>
+<h1><%="第#{@courses}课"%>&nbsp;&nbsp;&nbsp;&nbsp;<%=Record::TYPE_HASH[params[:type]]%></h1>
 <%=link_to "返回首页", root_path%>
 
 <div id="word_page">
